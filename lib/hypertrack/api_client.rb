@@ -58,13 +58,25 @@ module HyperTrack
       request_object
     end
 
+    # To-Do: Add a timeout
     def make_request(api_uri, request_object)
       conn = Net::HTTP.new api_uri.host, api_uri.port
       conn.use_ssl = api_uri.scheme == 'https'
       conn.verify_mode = OpenSSL::SSL::VERIFY_PEER
       conn.cert_store = OpenSSL::X509::Store.new
       conn.cert_store.set_default_paths
-      conn.request(request_object)
+      parse_response(conn.request(request_object))
+    end
+
+    def parse_response(response)
+      response_code = response.code.to_i
+
+      if response_code == 200
+        JSON.parse(response.body)
+      else
+        raise "Non-200 response from HyperTrack API: #{JSON.parse(response.body).inspect}"
+      end
+
     end
 
   end
