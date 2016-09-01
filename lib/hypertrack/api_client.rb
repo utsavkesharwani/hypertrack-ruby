@@ -1,7 +1,6 @@
-require "net/https"
+require 'net/https'
 
 module HyperTrack
-
   class ApiClient
 
     BASE_URL = "https://app.hypertrack.io/api"
@@ -11,6 +10,8 @@ module HyperTrack
       :get  => Net::HTTP::Get,
       :post => Net::HTTP::Post,
     }
+
+    ACCEPTED_RESPONSE_CODES = [200, 201]
 
     attr_accessor :secret_key
 
@@ -71,12 +72,15 @@ module HyperTrack
     def parse_response(response)
       response_code = response.code.to_i
 
-      if response_code == 200
+      if valid_response_code?(response_code)
         JSON.parse(response.body)
       else
-        raise "Non-200 response from HyperTrack API: #{JSON.parse(response.body).inspect}"
+        raise "Non-2xx (#{response_code}) response from HyperTrack API: #{JSON.parse(response.body).inspect}"
       end
+    end
 
+    def valid_response_code?(code)
+      ACCEPTED_RESPONSE_CODES.include?(code)
     end
 
   end

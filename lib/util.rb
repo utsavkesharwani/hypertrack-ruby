@@ -8,7 +8,7 @@ class Util
     end
 
     def blank?(value)
-      value.nil? || value.length.zero?
+      value.nil? || value.to_s.length.zero?
     end
 
   end
