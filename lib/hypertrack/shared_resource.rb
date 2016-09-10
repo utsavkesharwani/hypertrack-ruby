@@ -1,49 +1,55 @@
 module HyperTrack
-  class SharedResource < HyperTrack::ApiClient
+  class SharedResource
+    extend HyperTrack::ApiOperations::Create
+    extend HyperTrack::ApiOperations::Retrieve
+    extend HyperTrack::ApiOperations::List
 
     VALID_VEHICLE_TYPES = [:walking, :bicycle, :motorcycle, :car, :'3-wheeler', :van, :flight, :train, :ship]
 
-    def create(params)
-      raise "Error: Expected a Hash. Got: #{params}" unless valid_create_params?(params)
+    attr_accessor :id
 
-      params = Util.symbolize_keys(params)
-
-      raise "Request is missing required params - #{self.class::REQUIRED_FIELDS - params.keys}" if missing_required_fields?(params)
-
-      result = super(self.class::API_BASE_PATH, params)
+    def initialize(id, opts)
+      @id = id
+      @values = Util.symbolize_keys(opts)
     end
 
-    def retrieve(id)
-      raise "ID is required to retrieve a #{self.class.name}" unless valid_retrieve_id?(id)
-
-      retrieve_customer_path = "#{self.class::API_BASE_PATH}#{id}/"
-      result = fetch(retrieve_customer_path)
+    def [](k)
+      @values[k.to_sym]
     end
 
-    def list(filter_params={})
-      result = fetch(self.class::API_BASE_PATH, filter_params)
+    def []=(k, v)
+      send(:"#{k}=", v)
+    end
+
+    def keys
+      @values.keys
+    end
+
+    def values
+      @values.values
+    end
+
+    def to_json(*a)
+      JSON.generate(@values)
+    end
+
+    protected
+
+    def method_missing(name, *args)
+      return @values[name.to_sym] if @values.has_key?(name.to_sym)
+
+      super
     end
 
     private
 
-    def missing_required_fields?(params)
-      self.class::REQUIRED_FIELDS.each do |field|
-        return true if Util.blank?(params[field])
-      end
-
-      false
+    def self.get_class_name
+      # To-Do: Umm.. Find some better approach
+      Object.const_get(self.name)
     end
 
-    def valid_create_params?(params)
-      params.is_a?(Hash)
-    end
-
-    def valid_vehicle_type?(vehicle)
+    def self.valid_vehicle_type?(vehicle)
       VALID_VEHICLE_TYPES.include?(vehicle.to_s.downcase.to_sym)
-    end
-
-    def valid_retrieve_id?(id)
-      !Util.blank?(id)
     end
 
   end

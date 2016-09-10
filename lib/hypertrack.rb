@@ -1,23 +1,24 @@
 require "json"
+require 'net/https'
+
 require_relative "util"
+
+require_relative "hypertrack/api_operations/create"
+require_relative "hypertrack/api_operations/retrieve"
+require_relative "hypertrack/api_operations/list"
+
 require_relative "hypertrack/api_client"
+
 require_relative "hypertrack/shared_resource"
 require_relative "hypertrack/driver"
 require_relative "hypertrack/customer"
 require_relative "hypertrack/destination"
 require_relative "hypertrack/task"
 
-class HyperTrackApi
+module HyperTrack
 
-  attr_accessor :secret_key, :driver, :customer, :destination, :task
-
-  def initialize(options)
-    options      = Util.symbolize_keys(options)
-    @secret_key  = options[:secret_key]
-    @driver      = HyperTrack::Driver.new(@secret_key)
-    @customer    = HyperTrack::Customer.new(@secret_key)
-    @destination = HyperTrack::Destination.new(@secret_key)
-    @task        = HyperTrack::Task.new(@secret_key)
+  class << self
+    attr_accessor :secret_key
   end
 
 end
