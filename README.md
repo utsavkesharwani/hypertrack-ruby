@@ -72,11 +72,13 @@
   - [Start](http://docs.hypertrack.io/docs/tasks#start-task)
 
     `task = HyperTrack::Task.retrieve(task_id)`
+    
     `task.start({ start_location: { type: "Point", coordinates: [ 72.0, 19.0 ] }, vehicle_type: "car", driver_id: driver_id, start_time: Time.now.strftime("%Y-%m-%dT%H:%M") })`
 
   - [Complete](http://docs.hypertrack.io/docs/tasks#complete-task)
 
     `task = HyperTrack::Task.retrieve(task_id)`
+    
     `task.complete({ completion_location: { type: "Point", coordinates: [ 72.0, 19.3 ] }, completion_time: Time.now.strftime("%Y-%m-%dT%H:%M") })`
 
   - [Cancel](http://docs.hypertrack.io/docs/tasks#cancel-task)
