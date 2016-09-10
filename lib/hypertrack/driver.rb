@@ -1,5 +1,6 @@
 module HyperTrack
   class Driver < HyperTrack::SharedResource
+    include HyperTrack::ApiOperations::DriverAPI
 
     API_BASE_PATH = "drivers/"
     REQUIRED_FIELDS = [:name, :vehicle_type]
@@ -11,7 +12,7 @@ module HyperTrack
 
         params = Util.symbolize_keys(params)
 
-        raise "Error: Invalid vehicle_type: #{params[:vehicle_type]}. Allowed: #{VALID_VEHICLE_TYPES.join(', ')}" unless valid_vehicle_type?(params[:vehicle_type])
+        raise "Error: Invalid vehicle_type: #{params[:vehicle_type]}. Allowed: #{HyperTrack::SharedResource::VALID_VEHICLE_TYPES.join(', ')}" unless valid_vehicle_type?(params[:vehicle_type])
 
         super
       end

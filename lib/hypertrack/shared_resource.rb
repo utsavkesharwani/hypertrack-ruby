@@ -1,10 +1,10 @@
 module HyperTrack
   class SharedResource
-    extend HyperTrack::ApiOperations::Create
-    extend HyperTrack::ApiOperations::Retrieve
-    extend HyperTrack::ApiOperations::List
+    extend HyperTrack::ApiOperations::Common::Create
+    extend HyperTrack::ApiOperations::Common::Retrieve
+    extend HyperTrack::ApiOperations::Common::List
 
-    VALID_VEHICLE_TYPES = [:walking, :bicycle, :motorcycle, :car, :'3-wheeler', :van, :flight, :train, :ship]
+    VALID_VEHICLE_TYPES = [:walking, :bicycle, :motorcycle, :car, :'3-wheeler', :van] #[:flight, :train, :ship]
 
     attr_accessor :id
 
@@ -17,8 +17,8 @@ module HyperTrack
       @values[k.to_sym]
     end
 
-    def []=(k, v)
-      send(:"#{k}=", v)
+    def update_value(k, v)
+      @values[k.to_sym] = v
     end
 
     def keys

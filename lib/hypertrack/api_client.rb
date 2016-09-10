@@ -13,12 +13,13 @@ module HyperTrack
 
     class << self
 
-      def create(api_path, data)
+      def create(api_path, data={})
         api_uri = get_uri(api_path)
         request_object = create_request_object(api_uri, :post)
         request_object.body = data.to_json
         make_request(api_uri, request_object)
       end
+      alias_method :update, :create
 
       def fetch(api_path, query_params={})
         api_path = path_with_params(api_path, query_params) if query_params.is_a?(Hash) && query_params.keys.length > 0
