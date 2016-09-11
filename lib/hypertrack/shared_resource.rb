@@ -3,6 +3,7 @@ module HyperTrack
     extend HyperTrack::ApiOperations::Common::Create
     extend HyperTrack::ApiOperations::Common::Retrieve
     extend HyperTrack::ApiOperations::Common::List
+    include HyperTrack::ApiOperations::Common::Update
 
     VALID_VEHICLE_TYPES = [:walking, :bicycle, :motorcycle, :car, :'3-wheeler', :van] #[:flight, :train, :ship]
 
@@ -17,7 +18,7 @@ module HyperTrack
       @values[k.to_sym]
     end
 
-    def update_value(k, v)
+    def []=(k, v)
       @values[k.to_sym] = v
     end
 
@@ -36,7 +37,17 @@ module HyperTrack
     protected
 
     def method_missing(name, *args)
-      return @values[name.to_sym] if @values.has_key?(name.to_sym)
+      if name[-1] == "="
+        name = name[0..-2]
+
+        if @values.has_key?(name.to_sym)
+          self[name.to_sym] = args[0]
+          return
+        end
+
+      elsif @values.has_key?(name.to_sym)
+        return @values[name.to_sym]
+      end
 
       super
     end
