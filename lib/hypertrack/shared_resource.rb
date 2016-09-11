@@ -59,9 +59,5 @@ module HyperTrack
       Object.const_get(self.name)
     end
 
-    def self.valid_vehicle_type?(vehicle)
-      VALID_VEHICLE_TYPES.include?(vehicle.to_s.downcase.to_sym)
-    end
-
   end
 end

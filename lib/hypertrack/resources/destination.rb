@@ -4,5 +4,7 @@ module HyperTrack
     API_BASE_PATH = "destinations/"
     REQUIRED_FIELDS = [:customer_id]
 
+    VALID_ATTRIBUTE_VALUES = {}
+
   end
 end
