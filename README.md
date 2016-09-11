@@ -235,3 +235,14 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
     ```ruby
     HyperTrack::Shift.retrieve(shift_id).end_shift(end_location: { type: "Point", coordinates: [ 72.0, 19.2 ] } })
     ```
+
+- [Event](http://docs.hypertrack.io/docs/events)
+  - [Retrieve](http://docs.hypertrack.io/docs/events#retrieve-an-event)
+    ```ruby
+    HyperTrack::Event.retrieve(event_id)
+    ```
+
+  - [List all](http://docs.hypertrack.io/docs/events#list-all-events)
+    ```ruby
+    HyperTrack::Event.list
+    ```

@@ -30,6 +30,7 @@ require_relative "hypertrack/resources/neighbourhood"
 require_relative "hypertrack/resources/fleet"
 require_relative "hypertrack/resources/hub"
 require_relative "hypertrack/resources/shift"
+require_relative "hypertrack/resources/event"
 
 module HyperTrack
 
