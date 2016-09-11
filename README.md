@@ -2,6 +2,7 @@
 
 ### Initialization:
 ```ruby
+require 'hypertrack'
 HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
 ```
 
@@ -10,7 +11,6 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
 - [Driver](http://docs.hypertrack.io/v2.0/docs/drivers)
   - [Create](http://docs.hypertrack.io/v2.0/docs/drivers#create-a-driver)
     ```ruby
-    require 'hypertrack'
     HyperTrack::Driver.create(name: "SomeDriver", vehicle_type: "car")
     ```
     
@@ -167,4 +167,71 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
 
     ```ruby
     HyperTrack::Trip.retrieve(trip_id).change_task_order({ task_order: [task1_id, task2_id] })
+    ```
+
+- [Neighbourhood](http://docs.hypertrack.io/docs/neighbourhoods)
+  - [Retrieve](http://docs.hypertrack.io/docs/neighbourhoods#retrieve-a-neighborhood)
+    ```ruby
+    HyperTrack::Neighbourhood.retrieve(neighbourhood_id)
+    ```
+
+  - [List all](http://docs.hypertrack.io/docs/neighbourhoods#list-neighborhoods)
+    ```ruby
+    HyperTrack::Neighbourhood.list
+    ```
+
+- [Fleet](http://docs.hypertrack.io/docs/fleets)
+  - [Create](http://docs.hypertrack.io/docs/fleets#create-a-fleet)
+
+    ```ruby
+    HyperTrack::Fleet.create(name: "some_fleet")
+    ```
+
+  - [Retrieve](http://docs.hypertrack.io/docs/fleets#retrieve-a-fleet)
+    ```ruby
+    HyperTrack::Fleet.retrieve(fleet_id)
+    ```
+
+  - [List all](http://docs.hypertrack.io/docs/fleets#list-all-fleets)
+    ```ruby
+    HyperTrack::Fleet.list
+    ```
+
+- [Hub](http://docs.hypertrack.io/docs/hubs)
+  - [Create](http://docs.hypertrack.io/docs/hubs#create-a-hub)
+
+    ```ruby
+    HyperTrack::Hub.create(name: "some_hub")
+    ```
+
+  - [Retrieve](http://docs.hypertrack.io/docs/hubs#retrieve-a-hub)
+    ```ruby
+    HyperTrack::Hub.retrieve(hub_id)
+    ```
+
+  - [List all](http://docs.hypertrack.io/docs/hubs#list-all-hubs)
+    ```ruby
+    HyperTrack::Hub.list
+    ```
+
+- [Shift](http://docs.hypertrack.io/docs/shifts)
+  - [Start](http://docs.hypertrack.io/docs/shifts#start-a-shift)
+
+    ```ruby
+    HyperTrack::Shift.create({ driver_id: "some_driver_id", start_location: { type: "Point", coordinates: [ 72.0, 19.0 ] } })
+    ```
+
+  - [Retrieve](http://docs.hypertrack.io/docs/shifts#retrieve-a-shift)
+    ```ruby
+    HyperTrack::Shift.retrieve(shift_id)
+    ```
+
+  - [List all](http://docs.hypertrack.io/docs/shifts#list-all-shifts)
+    ```ruby
+    HyperTrack::Shift.list
+    ```
+
+  - [End Shift](http://docs.hypertrack.io/docs/shifts#end-shift)
+    ```ruby
+    HyperTrack::Shift.retrieve(shift_id).end_shift(end_location: { type: "Point", coordinates: [ 72.0, 19.2 ] } })
     ```

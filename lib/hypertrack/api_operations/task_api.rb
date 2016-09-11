@@ -27,12 +27,6 @@ module HyperTrack
         self.update(path, params, [:location])
       end
 
-      private
-
-      def valid_editable_url?(value)
-        HyperTrack::Task::VALID_EDITABLE_VALUES.include?(value.to_sym)
-      end
-
     end
   end
 end

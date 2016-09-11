@@ -12,6 +12,7 @@ require_relative "hypertrack/api_operations/common/update"
 require_relative "hypertrack/api_operations/driver_api"
 require_relative "hypertrack/api_operations/task_api"
 require_relative "hypertrack/api_operations/trip_api"
+require_relative "hypertrack/api_operations/shift_api"
 
 # All HTTP calls made here
 require_relative "hypertrack/api_client"
@@ -25,6 +26,10 @@ require_relative "hypertrack/resources/customer"
 require_relative "hypertrack/resources/destination"
 require_relative "hypertrack/resources/task"
 require_relative "hypertrack/resources/trip"
+require_relative "hypertrack/resources/neighbourhood"
+require_relative "hypertrack/resources/fleet"
+require_relative "hypertrack/resources/hub"
+require_relative "hypertrack/resources/shift"
 
 module HyperTrack
 
