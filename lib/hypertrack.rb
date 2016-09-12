@@ -2,9 +2,9 @@ require "json"
 require 'net/https'
 
 require_relative "util"
+require_relative "hypertrack/params_validator"
 
 # API Operations
-require_relative "hypertrack/api_operations/common/params_validator"
 require_relative "hypertrack/api_operations/common/create"
 require_relative "hypertrack/api_operations/common/retrieve"
 require_relative "hypertrack/api_operations/common/list"

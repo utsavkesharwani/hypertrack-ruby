@@ -3,8 +3,7 @@ class Util
   class << self
 
     def symbolize_keys(hash)
-      hash = hash.inject({}){ |memo, (k, v)| memo[k.to_sym] = v; memo }
-      hash
+      hash.inject({}){ |memo, (k, v)| memo[k.to_sym] = v; memo }
     end
 
     def blank?(value)

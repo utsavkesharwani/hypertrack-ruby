@@ -2,10 +2,9 @@ module HyperTrack
   module ApiOperations
     module Common
       module Update
-        include HyperTrack::ApiOperations::Common::ParamsValidator
 
         def update(path, params, required_params=[])
-          if valid_args?(params, required_params, self.class::VALID_ATTRIBUTE_VALUES)
+          if HyperTrack::ParamsValidator.valid_args?(params, required_params, self.class::VALID_ATTRIBUTE_VALUES)
             api_path = "#{self.class::API_BASE_PATH}#{self.id}/" + path
             result = HyperTrack::ApiClient.update(api_path, params)
             update_attributes_in_object(result)

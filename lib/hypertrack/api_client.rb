@@ -67,6 +67,7 @@ module HyperTrack
         response_code = response.code.to_i
 
         if valid_response_code?(response_code)
+          # To-Do: Handle if JSON parsing breaks. Or throw proper error.
           JSON.parse(response.body)
         else
           raise "Non-2xx (#{response_code}) response from HyperTrack API: #{JSON.parse(response.body).inspect}"
