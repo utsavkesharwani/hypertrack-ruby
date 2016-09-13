@@ -5,13 +5,13 @@ module HyperTrack
 
       def valid_args?(params, required_fields, valid_attr_values)
         unless valid_params_object?(params)
-          raise "Error: Expected a Hash. Got: #{params}"
+          raise HyperTrack::InvalidParameters.new("Error: Expected a Hash. Got: #{params}")
         end
 
         params = Util.symbolize_keys(params)
 
         if missing_required_fields?(params, required_fields)
-          raise "Request is missing required params - #{required_fields - params.keys}"
+          raise HyperTrack::InvalidParameters.new("Request is missing required params - #{required_fields - params.keys}")
         end
 
         params.each do |name, value|
@@ -20,7 +20,7 @@ module HyperTrack
 
           valid_values = valid_attr_values[name][:allowed]
           if !valid_values.include?(value) && !valid_values.include?(value.to_sym)
-            raise "Error: Invalid #{name}: #{value}. Allowed: #{valid_values.join(', ')}"
+            raise HyperTrack::InvalidParameters.new("Error: Invalid #{name}: #{value}. Allowed: #{valid_values.join(', ')}")
           end
         end
 

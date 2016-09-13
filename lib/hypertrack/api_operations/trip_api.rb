@@ -2,6 +2,21 @@ module HyperTrack
   module ApiOperations
     module TripAPI
 
+      def self.included(base)
+        base.extend(ClassMethods)
+      end
+
+      module ClassMethods
+
+        def sending_eta(params)
+          if HyperTrack::ParamsValidator.valid_args?(params, [:driver, :destination], HyperTrack::Trip::VALID_ATTRIBUTE_VALUES)
+            eta_path = "#{HyperTrack::Trip::API_BASE_PATH}lite/"
+            result = HyperTrack::ApiClient.update(eta_path, params)
+          end
+        end
+
+      end
+
       # Don't want to name this method as 'end'. Its a reserved keyword in Ruby.
       def end_trip(params)
         path = "end/"

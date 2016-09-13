@@ -4,6 +4,9 @@ require 'net/https'
 require_relative "util"
 require_relative "hypertrack/params_validator"
 
+# Errors
+require_relative "hypertrack/errors/hypertrack_errors"
+
 # API Operations
 require_relative "hypertrack/api_operations/common/create"
 require_relative "hypertrack/api_operations/common/retrieve"

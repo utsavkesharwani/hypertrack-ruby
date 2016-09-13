@@ -148,7 +148,7 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
   - [Send ETAs](http://docs.hypertrack.io/docs/trips#sending-etas)
 
     ```ruby
-    # To-Do: Implement me
+    HyperTrack::Trip.sending_eta({ driver: driver_hash, destination: destination_hash })
     ```
 
   - [Add Task](http://docs.hypertrack.io/docs/trips#adding-a-task-to-a-trip)

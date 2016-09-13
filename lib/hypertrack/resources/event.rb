@@ -7,7 +7,7 @@ module HyperTrack
     VALID_ATTRIBUTE_VALUES = {}
 
     def self.create(params={})
-      raise "Create not allowed on HyperTrack::Event class"
+      raise HyperTrack::MethodNotAllowed.new("Create not allowed on HyperTrack::Event class")
     end
 
   end

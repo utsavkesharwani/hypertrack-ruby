@@ -6,7 +6,7 @@ module HyperTrack
 
     VERB_MAP = {
       :get  => Net::HTTP::Get,
-      :post => Net::HTTP::Post,
+      :post => Net::HTTP::Post
     }
 
     ACCEPTED_RESPONSE_CODES = [200, 201]
@@ -36,6 +36,10 @@ module HyperTrack
       end
 
       def get_auth_header
+        if Util.blank?(HyperTrack.secret_key)
+          raise HyperTrack::InvalidAPIKey.new("HyperTrack.secret_key is invalid.")
+        end
+
         { "Authorization" => "token #{HyperTrack.secret_key}" }
       end
 
@@ -45,7 +49,9 @@ module HyperTrack
       end
 
       def create_request_object(api_uri, http_method)
-        raise 'Unsupported HTTP verb used - Only GET, POST allowed' if VERB_MAP[http_method].nil?
+        if VERB_MAP[http_method].nil?
+          raise HyperTrack::MethodNotAllowed.new("Unsupported HTTP verb used - Only #{VERB_MAP.keys.map{ |x| x.to_s.upcase }} allowed")
+        end
 
         header = get_auth_header
         request_object = VERB_MAP[http_method].new(api_uri.path, header)
@@ -67,10 +73,14 @@ module HyperTrack
         response_code = response.code.to_i
 
         if valid_response_code?(response_code)
-          # To-Do: Handle if JSON parsing breaks. Or throw proper error.
-          JSON.parse(response.body)
+          begin
+            JSON.parse(response.body)
+          rescue JSON::ParserError => e
+            raise HyperTrack::InvalidJSONResponse(response.body)
+          end
         else
-          raise "Non-2xx (#{response_code}) response from HyperTrack API: #{JSON.parse(response.body).inspect}"
+          error_klass = HyperTrack::Error.defined_codes[response_code] || HyperTrack::UnknownError
+          raise error_klass.new(response.body, response_code)
         end
       end
 
