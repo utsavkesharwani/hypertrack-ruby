@@ -246,3 +246,24 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
     ```ruby
     HyperTrack::Event.list
     ```
+
+- [GPS Log](http://docs.hypertrack.io/docs/gps-logs)
+  - [Create](http://docs.hypertrack.io/docs/gps-logs#create-a-gpslog)
+    ```ruby
+    HyperTrack::GPSLog.create({ bearing: 70, driver_id: "some_driver_id", location: { type: "Point", coordinates: [ 72.0, 19.0 ] }, altitude: 80, recorded_at: Time.now.strftime("%Y-%m-%dT%H:%M"), speed: 7, location_accuracy: 20.0 })
+    ```
+
+  - [Bulk Create](http://docs.hypertrack.io/docs/gps-logs#bulk-create-gpslogs)
+    ```ruby
+    # To-Do: Implement me
+    ```
+
+  - [Retrieve](http://docs.hypertrack.io/docs/gps-logs#retrieve-a-gpslog)
+    ```ruby
+    HyperTrack::GPSLog.retrieve(event_id)
+    ```
+
+  - [List all raw logs](http://docs.hypertrack.io/docs/gps-logs#list-all-raw-gpslogs)
+    ```ruby
+    HyperTrack::GPSLog.list
+    ```

@@ -34,6 +34,7 @@ require_relative "hypertrack/resources/fleet"
 require_relative "hypertrack/resources/hub"
 require_relative "hypertrack/resources/shift"
 require_relative "hypertrack/resources/event"
+require_relative "hypertrack/resources/gps_log"
 
 module HyperTrack
 
