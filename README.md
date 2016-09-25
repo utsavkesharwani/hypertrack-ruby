@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/hypertrack.svg)](https://badge.fury.io/rb/hypertrack)
+
 # HyperTrack RubyGem
 
 ### Initialization:

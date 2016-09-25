@@ -16,6 +16,7 @@ require_relative "hypertrack/api_operations/driver_api"
 require_relative "hypertrack/api_operations/task_api"
 require_relative "hypertrack/api_operations/trip_api"
 require_relative "hypertrack/api_operations/shift_api"
+require_relative "hypertrack/api_operations/gps_log_api"
 
 # All HTTP calls made here
 require_relative "hypertrack/api_client"

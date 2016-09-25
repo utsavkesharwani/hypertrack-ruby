@@ -1,5 +1,6 @@
 module HyperTrack
   class GPSLog < HyperTrack::SharedResource
+    include HyperTrack::ApiOperations::GPSLogAPI
 
     API_BASE_PATH = "gps/"
     REQUIRED_FIELDS = [:driver_id, :location, :speed, :bearing, :altitude, :recorded_at]
@@ -13,16 +14,17 @@ module HyperTrack
       }
     }
 
-    class << self
+    def self.create(params={})
+      raise HyperTrack::MethodNotAllowed.new("Create not allowed on HyperTrack::GPSLog class")
+    end
 
-      def filtered_logs(params)
-        path = "#{API_BASE_PATH}filtered/"
-        if HyperTrack::ParamsValidator.valid_args?(params, [:driver_id], get_class_name::VALID_ATTRIBUTE_VALUES)
-          result = HyperTrack::ApiClient.fetch(path, params)
-          # get_class_name.new(result['id'], result)
-        end
+    def self.list(params={})
+
+      if params.is_a?(Hash)
+        params[:filtered] ? params.delete(:raw) : params[:raw] = true
       end
 
+      super(params)
     end
 
   end
