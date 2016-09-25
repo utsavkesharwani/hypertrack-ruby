@@ -1,14 +1,26 @@
 [![Gem Version](https://badge.fury.io/rb/hypertrack.svg)](https://badge.fury.io/rb/hypertrack)
 
 # HyperTrack RubyGem
+A RubyGem for [HyperTrack](https://www.hypertrack.io/)'s [Backend API](http://docs.hypertrack.io/docs/getting-started-with-backend-integration)
 
-### Initialization:
+## Installation
+
+Add this line to your application's Gemfile:
+```ruby
+gem 'hypertrack'
+```
+
+And then run `bundle install` on command line.
+
+Or install it yourself as: `gem install hypertrack`
+
+## Initialization:
 ```ruby
 require 'hypertrack'
 HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
 ```
 
-## HyperTrack - Resources
+## HyperTrack - API and Resources
 
 - [Driver](http://docs.hypertrack.io/v2.0/docs/drivers)
   - [Create](http://docs.hypertrack.io/v2.0/docs/drivers#create-a-driver)
