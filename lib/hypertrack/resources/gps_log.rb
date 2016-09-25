@@ -23,6 +23,7 @@ module HyperTrack
       if params.is_a?(Hash)
         params[:filtered] ? params.delete(:raw) : params[:raw] = true
       end
+      params.delete(:filtered)
 
       super(params)
     end
