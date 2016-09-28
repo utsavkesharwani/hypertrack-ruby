@@ -13,5 +13,7 @@ Gem::Specification.new do |spec|
   spec.license     = 'MIT'
 
   spec.add_dependency 'json', '~> 1.8'
+  spec.add_dependency 'rspec', '~> 3.5'
+  spec.add_dependency 'webmock', '~> 2.1'
   spec.required_ruby_version = '>= 2.0.0'
 end

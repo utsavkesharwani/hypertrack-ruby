@@ -1,5 +1,5 @@
 require "json"
-require 'net/https'
+require "net/https"
 
 require_relative "util"
 require_relative "hypertrack/params_validator"
