@@ -49,7 +49,7 @@ describe HyperTrack::Driver do
     before(:all) do
       HyperTrack.secret_key = "abc"
 
-      @driver_params = { id: "1bc2aa10-179e-4321-a2d2-da1ceca1fe1a", name: "foo", vehicle_type: "car" }
+      @driver_params = { id: "unique_driver_id", name: "foo", vehicle_type: "car" }
 
       @request_headers = {
         Accept: '*/*',
@@ -116,7 +116,7 @@ describe HyperTrack::Driver do
     end
 
     context ".list with valid args" do
-      it "should return a HyperTrack::Driver object" do
+      it "should return an array of HyperTrack::Driver object(s)" do
         stub_request(:get, "#{HyperTrack::ApiClient::BASE_URL}/#{HyperTrack::ApiClient::API_VERSION}/#{HyperTrack::Driver::API_BASE_PATH}").
           with({ headers: @request_headers }).
           to_return({ body: { count: 1, results: [@response_driver_hash] }.to_json, status: 200 })

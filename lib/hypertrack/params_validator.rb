@@ -10,8 +10,9 @@ module HyperTrack
 
         params = Util.symbolize_keys(params)
 
-        if missing_required_fields?(params, required_fields)
-          raise HyperTrack::InvalidParameters.new("Request is missing required params - #{required_fields - params.keys}")
+        missing_params = missing_required_fields(params, required_fields)
+        if missing_params.length > 0
+          raise HyperTrack::InvalidParameters.new("Request is missing required params - #{missing_params}")
         end
 
         params.each do |name, value|
@@ -33,12 +34,13 @@ module HyperTrack
         params.is_a?(Hash)
       end
 
-      def missing_required_fields?(params, required_fields)
+      def missing_required_fields(params, required_fields)
+        missing_fields = []
         required_fields.each do |field|
-          return true if Util.blank?(params[field])
+          missing_fields << field if Util.blank?(params[field])
         end
 
-        false
+        missing_fields
       end
 
     end
