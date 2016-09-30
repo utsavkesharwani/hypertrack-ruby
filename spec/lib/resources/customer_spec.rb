@@ -32,7 +32,7 @@ describe HyperTrack::Customer do
     end
   end
 
-  describe "HyperTrack::Customer methods with valid args should return proper values" do
+  describe "HyperTrack::Customer class methods with valid args should return proper values" do
 
     before(:all) do
       HyperTrack.secret_key = "abc"

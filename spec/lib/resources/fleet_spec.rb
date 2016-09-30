@@ -32,7 +32,7 @@ describe HyperTrack::Fleet do
     end
   end
 
-  describe "HyperTrack::Fleet methods with valid args should return proper values" do
+  describe "HyperTrack::Fleet class methods with valid args should return proper values" do
 
     before(:all) do
       HyperTrack.secret_key = "abc"

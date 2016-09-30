@@ -44,7 +44,7 @@ describe HyperTrack::Driver do
     end
   end
 
-  describe "HyperTrack::Driver methods with valid args should return proper values" do
+  describe "HyperTrack::Driver class methods with valid args should return proper values" do
 
     before(:all) do
       HyperTrack.secret_key = "abc"

@@ -49,21 +49,94 @@ describe HyperTrack::Task do
       end
     end
 
-    context "given invalid value for editable_url" do
+    context "required params missing for editable_url" do
       it "should raise InvalidParameters error" do
         expect { HyperTrack::Task.new('task_id', {}).editable_url({}) }.
         to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:editable]")
 
         expect { HyperTrack::Task.new('task_id', {}).editable_url({ editable: nil }) }.
         to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:editable]")
+      end
+    end
 
+    context "given invalid value for editable_url" do
+      it "should raise InvalidParameters error" do
         expect { HyperTrack::Task.new('task_id', {}).editable_url({ editable: 'random' }) }.
         to raise_error(HyperTrack::InvalidParameters, /Error: Invalid editable: random/)
       end
     end
-  end  
+  end
 
-  describe "HyperTrack::Task methods with valid args should return proper values" do
+  describe "#start with invalid args" do
+    context "given blank string or nil as params" do
+      it "should raise InvalidParameters error" do
+        expect { HyperTrack::Task.new('task_id', {}).start('') }.
+        to raise_error(HyperTrack::InvalidParameters, "Error: Expected a Hash. Got: ")
+
+        expect { HyperTrack::Task.new('task_id', {}).start(nil) }.
+        to raise_error(HyperTrack::InvalidParameters, "Error: Expected a Hash. Got: ")
+      end
+    end
+
+    context "one or all required params missing for start" do
+      it "should raise InvalidParameters error" do
+        expect { HyperTrack::Task.new('task_id', {}).start({}) }.
+        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:start_location, :start_time]")
+
+        expect { HyperTrack::Task.new('task_id', {}).start({ start_time: Time.now.strftime("%Y-%m-%dT%H:%M") }) }.
+        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:start_location]")
+
+        expect { HyperTrack::Task.new('task_id', {}).start({ start_location: { type: "Point", coordinates: [ 72.0, 19.0 ] } }) }.
+        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:start_time]")
+      end
+    end
+  end
+
+  describe "#complete with invalid args" do
+    context "given blank string or nil as params" do
+      it "should raise InvalidParameters error" do
+        expect { HyperTrack::Task.new('task_id', {}).complete('') }.
+        to raise_error(HyperTrack::InvalidParameters, "Error: Expected a Hash. Got: ")
+
+        expect { HyperTrack::Task.new('task_id', {}).complete(nil) }.
+        to raise_error(HyperTrack::InvalidParameters, "Error: Expected a Hash. Got: ")
+      end
+    end
+
+    context "required params missing for start" do
+      it "should raise InvalidParameters error" do
+        expect { HyperTrack::Task.new('task_id', {}).complete({}) }.
+        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:completion_location]")
+
+        expect { HyperTrack::Task.new('task_id', {}).complete({ completion_location: nil }) }.
+        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:completion_location]")
+      end
+    end
+  end
+
+  describe "#update_destination with invalid args" do
+    context "given blank string or nil as params" do
+      it "should raise InvalidParameters error" do
+        expect { HyperTrack::Task.new('task_id', {}).update_destination('') }.
+        to raise_error(HyperTrack::InvalidParameters, "Error: Expected a Hash. Got: ")
+
+        expect { HyperTrack::Task.new('task_id', {}).update_destination(nil) }.
+        to raise_error(HyperTrack::InvalidParameters, "Error: Expected a Hash. Got: ")
+      end
+    end
+
+    context "required params missing for start" do
+      it "should raise InvalidParameters error" do
+        expect { HyperTrack::Task.new('task_id', {}).update_destination({}) }.
+        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:location]")
+
+        expect { HyperTrack::Task.new('task_id', {}).update_destination({ location: nil }) }.
+        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:location]")
+      end
+    end
+  end
+
+  describe "HyperTrack::Task class methods with valid args should return proper values" do
 
     before(:all) do
       HyperTrack.secret_key = "abc"

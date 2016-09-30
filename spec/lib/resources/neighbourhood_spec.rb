@@ -30,7 +30,7 @@ describe HyperTrack::Neighbourhood do
     end
   end
 
-  describe "HyperTrack::Neighbourhood methods with valid args should return proper values" do
+  describe "HyperTrack::Neighbourhood class methods with valid args should return proper values" do
 
     before(:all) do
       HyperTrack.secret_key = "abc"

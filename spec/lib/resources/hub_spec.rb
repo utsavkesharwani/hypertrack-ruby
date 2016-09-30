@@ -32,7 +32,7 @@ describe HyperTrack::Hub do
     end
   end
 
-  describe "HyperTrack::Hub methods with valid args should return proper values" do
+  describe "HyperTrack::Hub class methods with valid args should return proper values" do
 
     before(:all) do
       HyperTrack.secret_key = "abc"
