@@ -68,10 +68,10 @@ describe HyperTrack::Shift do
 
       @request_headers = {
         Accept: '*/*',
-        'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
         Authorization: "token #{HyperTrack.secret_key}",
-        'Content-Type': 'application/json',
-        'User-Agent': 'Ruby'
+        'Content-Type' => 'application/json',
+        'User-Agent' => 'Ruby'
       }
 
       @response_shift_hash = {
@@ -147,10 +147,10 @@ describe HyperTrack::Shift do
 
       @request_headers = {
         Accept: '*/*',
-        'Accept-Encoding': 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+        'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
         Authorization: "token #{HyperTrack.secret_key}",
-        'Content-Type': 'application/json',
-        'User-Agent': 'Ruby'
+        'Content-Type' => 'application/json',
+        'User-Agent' => 'Ruby'
       }
 
       @shift_params = {
