@@ -167,11 +167,11 @@ describe HyperTrack::Task do
         completion_location: nil,
         order_id: nil,
         tracking_url:  "http://eta.fyi/random-tracking-id",
-        "tracking_urls": [
+        tracking_urls: [
           {
-            "editable": "not editable",
-            "number_of_edits": 0,
-            "tracking_url": "http://eta.fyi/random-tracking-id"
+            editable: "not editable",
+            number_of_edits: 0,
+            tracking_url: "http://eta.fyi/random-tracking-id"
           }
         ],
         created_at: "2016-09-26T19:52:28.561076Z",

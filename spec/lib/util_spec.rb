@@ -5,13 +5,13 @@ describe Util do
   describe ".symbolize_keys" do
     context "given hash with string keys as argument" do
       it "should return hash with symbolized keys" do
-        expect(Util.symbolize_keys({ 'k1': 'v1', 'k2': 'v2' })).to eq({ k1: 'v1', k2: 'v2' })
+        expect(Util.symbolize_keys({ 'k1' => 'v1', 'k2' => 'v2' })).to eq({ k1: 'v1', k2: 'v2' })
       end
     end
 
     context "given nested hash with string keys as argument" do
       it "should symbolize keys by one level in the Hash" do
-        expect(Util.symbolize_keys({ 'k1': 'v1', 'k2': { 'kk1': 'vv1' } })).to eq({ k1: 'v1', k2: { 'kk1': 'vv1' } })
+        expect(Util.symbolize_keys({ 'k1' => 'v1', 'k2' => { 'kk1' => 'vv1' } })).to eq({ k1: 'v1', k2: { 'kk1' => 'vv1' } })
       end
     end
   end
