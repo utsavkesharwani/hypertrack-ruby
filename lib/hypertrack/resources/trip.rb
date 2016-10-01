@@ -3,11 +3,14 @@ module HyperTrack
     include HyperTrack::ApiOperations::TripAPI
 
     API_BASE_PATH = "trips/"
-    REQUIRED_FIELDS = [:driver_id, :start_location, :tasks]
+    REQUIRED_FIELDS = [:driver_id, :start_location, :tasks, :has_ordered_tasks]
 
     VALID_ATTRIBUTE_VALUES = {
       vehicle_type: {
         allowed: HyperTrack::SharedResource::VALID_VEHICLE_TYPES
+      },
+      has_ordered_tasks: {
+        allowed: [true, false]
       }
     }
 
