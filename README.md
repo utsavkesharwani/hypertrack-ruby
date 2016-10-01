@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/hypertrack.svg)](https://badge.fury.io/rb/hypertrack)
+[![Gem Version](https://badge.fury.io/rb/hypertrack.svg)](https://badge.fury.io/rb/hypertrack) [![Build Status](https://travis-ci.org/utsavkesharwani/hypertrack-ruby.svg?branch=tests)](https://travis-ci.org/utsavkesharwani/hypertrack-ruby)
 
 # HyperTrack RubyGem
 A RubyGem for [HyperTrack](https://www.hypertrack.io/)'s [Backend API](http://docs.hypertrack.io/docs/getting-started-with-backend-integration)
@@ -138,7 +138,7 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
   - [Start](http://docs.hypertrack.io/docs/trips#start-a-trip)
 
     ```ruby
-    HyperTrack::Trip.create({ driver_id: driver_id, start_location: { type: "Point", coordinates: [ 72.0, 19.0 ] }, tasks: [task1_id, task2_id], vehicle_type: "car" })
+    HyperTrack::Trip.create({ driver_id: driver_id, start_location: { type: "Point", coordinates: [ 72.0, 19.0 ] }, tasks: [task1_id, task2_id], vehicle_type: "car", has_ordered_tasks: true })
     ```
 
   - [Retrieve](http://docs.hypertrack.io/docs/trips#retrieve-a-trip)

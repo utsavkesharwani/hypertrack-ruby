@@ -11,7 +11,7 @@ module HyperTrack
         def sending_eta(params)
           if HyperTrack::ParamsValidator.valid_args?(params, [:driver, :destination], HyperTrack::Trip::VALID_ATTRIBUTE_VALUES)
             eta_path = "#{HyperTrack::Trip::API_BASE_PATH}lite/"
-            result = HyperTrack::ApiClient.update(eta_path, params)
+            HyperTrack::ApiClient.update(eta_path, params)
           end
         end
 

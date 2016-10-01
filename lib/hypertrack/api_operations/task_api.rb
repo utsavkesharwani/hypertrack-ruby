@@ -3,8 +3,10 @@ module HyperTrack
     module TaskAPI
 
       def editable_url(params)
-        path = "editable_url/"
-        self.update(path, params, [:editable])
+        if HyperTrack::ParamsValidator.valid_args?(params, [:editable], self.class::VALID_ATTRIBUTE_VALUES)
+          api_path = "#{self.class::API_BASE_PATH}#{self.id}/editable_url/"
+          HyperTrack::ApiClient.update(api_path, params)
+        end
       end
 
       def start(params)
