@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/hypertrack.svg)](https://badge.fury.io/rb/hypertrack) [![Build Status](https://travis-ci.org/utsavkesharwani/hypertrack-ruby.svg?branch=tests)](https://travis-ci.org/utsavkesharwani/hypertrack-ruby)
+[![Gem Version](https://badge.fury.io/rb/hypertrack.svg)](https://badge.fury.io/rb/hypertrack) [![Build Status](https://travis-ci.org/utsavkesharwani/hypertrack-ruby.svg)](https://travis-ci.org/utsavkesharwani/hypertrack-ruby)
 
 # HyperTrack RubyGem
 A RubyGem for [HyperTrack](https://www.hypertrack.io/)'s [Backend API](http://docs.hypertrack.io/docs/getting-started-with-backend-integration)
@@ -259,4 +259,20 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
   - [List all](http://docs.hypertrack.io/docs/events#list-all-events)
     ```ruby
     HyperTrack::Event.list
+    ```
+
+- [GPS Log](http://docs.hypertrack.io/docs/gps-logs)
+  - [Retrieve](http://docs.hypertrack.io/docs/gps-logs#retrieve-a-gpslog)
+    ```ruby
+    HyperTrack::GPSLog.retrieve(event_id)
+    ```
+
+  - [List all](http://docs.hypertrack.io/docs/gps-logs#list-all-raw-gpslogs)
+    ```ruby
+    HyperTrack::GPSLog.list
+    ```
+
+  - [Filtered List](http://docs.hypertrack.io/docs/gps-logs#list-all-filtered-gpslogs)
+    ```ruby
+    HyperTrack::GPSLog.filtered_list(driver_id:  "some_driver_id")
     ```
