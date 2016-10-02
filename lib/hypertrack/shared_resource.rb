@@ -30,7 +30,7 @@ module HyperTrack
       @values.values
     end
 
-    def to_json(*a)
+    def to_json
       JSON.generate(@values)
     end
 
