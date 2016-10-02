@@ -1,4 +1,5 @@
-require 'hypertrack'
+require "hypertrack"
+require "spec_helper"
 
 describe Util do
 
