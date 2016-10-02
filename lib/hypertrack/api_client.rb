@@ -76,7 +76,7 @@ module HyperTrack
           begin
             JSON.parse(response.body)
           rescue JSON::ParserError => e
-            raise HyperTrack::InvalidJSONResponse(response.body)
+            raise HyperTrack::InvalidJSONResponse.new(response.body)
           end
         else
           error_klass = HyperTrack::Error.defined_codes[response_code] || HyperTrack::UnknownError
