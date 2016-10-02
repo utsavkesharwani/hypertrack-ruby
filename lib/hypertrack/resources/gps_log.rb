@@ -19,7 +19,6 @@ module HyperTrack
     end
 
     def self.list(params={})
-
       if params.is_a?(Hash)
         params[:filtered] ? params.delete(:raw) : params[:raw] = true
       end

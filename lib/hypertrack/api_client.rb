@@ -54,7 +54,7 @@ module HyperTrack
         end
 
         header = get_auth_header
-        request_object = VERB_MAP[http_method].new(api_uri.path, header)
+        request_object = VERB_MAP[http_method].new(api_uri.request_uri, header)
         request_object['Content-Type'] = 'application/json'
         request_object
       end
