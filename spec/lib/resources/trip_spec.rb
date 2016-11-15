@@ -104,16 +104,6 @@ describe HyperTrack::Trip do
         to raise_error(HyperTrack::InvalidParameters, "Error: Expected a Hash. Got: ")
       end
     end
-
-    context "required params missing for #end_trip" do
-      it "should raise InvalidParameters error" do
-        expect { HyperTrack::Trip.new('trip_id', {}).end_trip({}) }.
-        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:end_location]")
-
-        expect { HyperTrack::Trip.new('trip_id', {}).end_trip({ end_location: nil }) }.
-        to raise_error(HyperTrack::InvalidParameters, "Request is missing required params - [:end_location]")
-      end
-    end
   end
 
   describe "#add_task with invalid args" do
