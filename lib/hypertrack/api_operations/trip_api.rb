@@ -20,7 +20,7 @@ module HyperTrack
       # Don't want to name this method as 'end'. Its a reserved keyword in Ruby.
       def end_trip(params)
         path = "end/"
-        self.update(path, params, [:end_location])
+        self.update(path, params, [])
       end
 
       def add_task(params)
