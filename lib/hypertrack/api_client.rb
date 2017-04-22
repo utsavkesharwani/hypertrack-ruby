@@ -1,7 +1,7 @@
 module HyperTrack
   class ApiClient
 
-    BASE_URL = "https://app.hypertrack.io/api"
+    BASE_URL = "https://api.hypertrack.com/api"
     API_VERSION = "v1"
 
     VERB_MAP = {

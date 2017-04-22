@@ -10,7 +10,7 @@ module HyperTrack
             api_result['results'][idx] = get_class_name.new(opts['id'], opts)
           end
 
-          api_result
+          api_result['results']
         end
 
       end

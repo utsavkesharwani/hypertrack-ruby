@@ -15,7 +15,9 @@ module HyperTrack
         410 => HyperTrack::ResourceRemovedFromServer,
         429 => HyperTrack::RateLimitExceeded,
         500 => HyperTrack::InternalServerError,
-        503 => HyperTrack::ServiceTemporarilyUnavailable
+        502 => HyperTrack::BadGateway,
+        503 => HyperTrack::ServiceTemporarilyUnavailable,
+        504 => HyperTrack::GatewayTimeout
       }
     end
 
@@ -56,8 +58,14 @@ module HyperTrack
   # Raised when - There was an error on the server and we have been notified. Try again later.
   class InternalServerError < Error; end
 
-  # Raised when - We are temporarily offline for maintenance. Please try again later.
+  # Raised when - load balancer throws 502
+  class BadGateway < Error; end
+
+  # Raised when - service throws 500
   class ServiceTemporarilyUnavailable < Error; end
+
+  # Raised when - load balancer throws 504
+  class GatewayTimeout < Error; end
 
   # Raised when - We get an unknown response code from the API
   class UnknownError < Error; end
