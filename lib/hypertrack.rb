@@ -10,6 +10,7 @@ require_relative "hypertrack/errors/hypertrack_errors"
 # API Operations
 require_relative "hypertrack/api_operations/common/create"
 require_relative "hypertrack/api_operations/common/get"
+require_relative "hypertrack/api_operations/common/nearby"
 require_relative "hypertrack/api_operations/common/retrieve"
 require_relative "hypertrack/api_operations/common/list"
 require_relative "hypertrack/api_operations/common/update"

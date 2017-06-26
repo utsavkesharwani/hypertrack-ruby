@@ -28,8 +28,6 @@ module HyperTrack
         make_request(api_uri, request_object)
       end
 
-      private
-
       def path_with_params(path, params)
         encoded_params = URI.encode_www_form(params)
         [path, encoded_params].join("?")
