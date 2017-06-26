@@ -7,6 +7,10 @@ module HyperTrack
         self.update(path, params, [:action_ids])
       end
 
+      def update(params)
+        self.patch(params)
+      end
+
     end
   end
 end
