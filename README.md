@@ -7,12 +7,12 @@ A RubyGem for [HyperTrack](https://www.hypertrack.io/)'s [Backend API](https://d
 
 Add this line to your application's Gemfile:
 ```ruby
-gem 'hypertrack', '~> 0.1.0'
+gem 'hypertrack', '~> 0.1.3'
 ```
 
 And then run `bundle install` on command line.
 
-Or install it yourself as: `gem install hypertrack -v 0.1.0`
+Or install it yourself as: `gem install hypertrack -v 0.1.3`
 
 ## Initialization:
 ```ruby
