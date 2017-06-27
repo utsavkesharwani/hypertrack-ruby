@@ -25,14 +25,20 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
 - [User](https://docs.hypertrack.com/v3/api/entities/user.html)
   - [Create](https://docs.hypertrack.com/v3/api/entities/user.html#create-a-user)
     ```ruby
-    HyperTrack::User.create(name: "SomeDriver", vehicle_type: "car")
+    HyperTrack::User.create(name: "Mike harris", vehicle_type: "car")
     ```
     
   - [Retrieve](https://docs.hypertrack.com/v3/api/entities/user.html#retrieve-a-user)
     ```ruby
     HyperTrack::User.retrieve(user_id)
     ```
-  
+
+  - [Update](https://docs.hypertrack.com/api/entities/user.html#update-a-user)
+    ```ruby
+    user = HyperTrack::User.retrieve(user_id)
+    user.update(name: "Mike J harris")
+    ```
+
   - [List all](https://docs.hypertrack.com/v3/api/entities/user.html#list-all-users)
     ```ruby
     HyperTrack::User.list
@@ -42,6 +48,11 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
     ```ruby
     user = HyperTrack::User.retrieve(user_id)
     user.assign_actions({action_ids: [action_id_1, action_id_2]})
+    ```
+
+  - [Location-based Assignment - Find Nearby Users](https://docs.hypertrack.com/api/entities/user.html#list-nearby-users)
+    ```ruby
+    users = HyperTrack::User.nearby({action_id: "0a874ed1-a4f4-4786-8319-a5d75bc9948b"})
     ```
 
 - [Action](https://docs.hypertrack.com/v3/api/entities/action.html)
@@ -75,4 +86,11 @@ HyperTrack.secret_key = "<YOUR_SECRET_KEY>"
     ```ruby
     action = HyperTrack::Action.retrieve(action_id)
     action.cancel()
+    ```
+
+  - [Mileage Tracking - Meter an Action](https://docs.hypertrack.com/v3/api/entities/action.html#meter-an-action)
+
+    ```ruby
+    action = HyperTrack::Action.retrieve(action_id)
+    result = action.meter()
     ```
