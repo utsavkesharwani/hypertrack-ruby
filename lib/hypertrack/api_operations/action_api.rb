@@ -4,7 +4,7 @@ module HyperTrack
 
       def complete(params={})
         path = "complete/"
-        self.update(path, params, [:completion_location])
+        self.update(path, params)
       end
 
       def cancel(params={})
