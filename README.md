@@ -1,3 +1,6 @@
+# Warning: this project has migrated to HyperTrack's official [GitHub account](https://github.com/hypertrack/hypertrack-ruby)
+
+
 [![Gem Version](https://badge.fury.io/rb/hypertrack.svg)](https://badge.fury.io/rb/hypertrack) [![Build Status](https://travis-ci.org/utsavkesharwani/hypertrack-ruby.svg)](https://travis-ci.org/utsavkesharwani/hypertrack-ruby) [![Code Coverage](https://img.shields.io/codecov/c/github/utsavkesharwani/hypertrack-ruby.svg)](https://codecov.io/gh/utsavkesharwani/hypertrack-ruby)
 
 # HyperTrack RubyGem
